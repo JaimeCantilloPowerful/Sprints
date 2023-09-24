@@ -1,0 +1,208 @@
+#navA {
+    background-color: #ffe4cbea !important; 
+}
+
+.navbar-brand{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: xx-large;
+}
+
+.btn.btn-outline-success:hover {
+    border-color: black; /* Nuevo color del borde al pasar el mouse */
+    background-color: black ;
+    color: #ffe4cbea; /* Nuevo color del texto al pasar el mouse */
+}
+
+.btn.btn-outline-success{
+    color: black;
+    border-color: black;
+}
+
+.custom-search-form {
+    margin-right: 10px; /* Ajusta el valor según tus preferencias */
+    margin-left: 10px; /* Ajusta el valor según tus preferencias */
+  }
+  
+  .nav-link {
+    margin-right: 10px; /* Ajusta el valor según tus preferencias */
+  }
+  
+
+/* Estilos para la sección de Hero */
+.hero {
+    background-image: url('https://png.pngtree.com/background/20211215/original/pngtree-aesthetic-background-pink-pastel-picture-image_1448496.jpg');
+    color: black;
+    text-align: center;
+    padding: 100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
+    padding: 80px 0;
+    text-align: center;
+}
+
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px; 
+    margin-top: 0; 
+    font-weight: bold;
+    animation: fadeInUp 1s ease-in-out;
+   
+}
+
+
+.hero-content p {
+    font-size: 1.25em;
+    margin: bottom 150px;;
+    font-weight: bold;
+    animation: fadeInUp 1s ease-in-out; 
+}
+
+
+/* Estilos para el botón */
+.btn-primary {
+    background-color: #b7c1ca;
+    color: #050505;
+    border-color: #b7c1ca;
+    padding: 10px 10px;
+    font-size: 1em;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background-color: rgb(161, 161, 161);
+    color: black;
+    border-color: black;
+}
+
+/* Media query para diseño responsivo */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .btn-primary {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+}
+
+/*Estilos para featured-products*/
+
+.featured-products {
+    margin-top: 20px; /* Agrega un margen superior de 20px */
+    margin-bottom: 40px; /* Agrega un margen superior de 40px */
+}
+
+
+.newsletter {
+    margin-top: 40px; /* Ajusta el valor según el espacio que deseas */
+}
+
+.newsletter {
+    background-image: url('Fondo\ Urban\ Elegance.jpg');
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+    padding: 80px 0;
+    text-align: center;
+}
+
+/*Esitlos para subcripcion al boletin*/
+
+.newsletter h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.newsletter p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+#newsletter-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#newsletter-form input {
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+#newsletter-form button {
+    padding: 10px 20px;
+}
+
+/*Estilos para el footer*/
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+footer h4 {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+footer p {
+    font-size: 1em;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer ul li {
+    margin-bottom: 10px;
+}
+
+footer ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.social-icons {
+    list-style: none;
+    padding: 0;
+}
+
+.social-icons li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.social-icons a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5em;
+}

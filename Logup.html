@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro en Urban Elegance</title>
+    <link rel="stylesheet" href="./Logup.css">
+    <link rel="icon" href="./Urban Elegance.png">
+</head>
+<body>
+    <div class="registro-container">
+        <div class="logo">
+            <img src="Urban Elegance.png" alt="Logo de Urban Elengance">
+        </div>
+        <h2>Regístrate en Urban Elegance</h2>
+        <form action="#" method="post">
+            <label>Nombre completo:</label>
+            <input type="text" name="nombre" placeholder="Nombre completo" required>
+            <label>Direccion de correo:</label>
+            <input type="email" name="correo" placeholder="Ejemplo12@gmil.com o nuemero de telefono" required>
+            <label>Contraseña:</label>
+            <input type="password" name="contraseña" placeholder="contraseña" required>
+            <label>Fecha de nacimiento:</label>
+            <input type="date" name="fecha-nacimiento" required>
+            <label>Sexo:</label>
+            <select name="sexo" required>
+                <option value="masculino">Masculino</option>
+                <option value="femenino">Femenino</option>
+                <option value="otro">Otro</option>
+            </select>
+            <p>Al hacer clic en Registrarte, aceptas nuestras Condiciones, la Política de datos y la Política de cookies. Es posible que te enviemos notificaciones por SMS, que puedes desactivar cuando quieras.</p>
+            <button class="registro-button" type="submit">Registrarte</button>
+        </form>
+        <p>¿Ya tienes una cuenta? <a href="#">Inicia sesión</a></p>
+    </div>
+</body>
+</html>

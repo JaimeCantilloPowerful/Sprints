@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Elegance</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./admin.css">
+    <link rel="icon" href="./Urban Elegance.png">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand">
+            <a href="#">Urban Elegance</a>
+        </div>
+        <div class="profile">
+            <img src=".png" alt="Mi Foto de Perfil">
+        </div>
+        <div class="help">
+            <a href="#">Ajustes</a>
+        </div>
+    </nav>
+
+    <div class="content">
+      
+    </div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Panel de administrador</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Explorar</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Perdidos</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 Menu
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Cuentas</a></li>
+                  <li><a class="dropdown-item" href="#">Historial de compras</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Registro</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">V.1.0</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="AJUSTES" aria-label="AJUSTES">
+              <button class="btn btn-outline-success" type="submit">Busqueda de items</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    <div class="taskbar">
+        <div class="task">
+            
+            <span>Informacion</span>
+        </div>
+        <div class="task">
+           
+            <span>Precios</span>
+        </div>
+        <div class="task">
+            
+            <span>Nueva compra</span>
+        </div>
+
+        <div class="task">
+        
+            <span>Trasporte</span>
+        </div>
+    </div>
+    <div class="content">
+    </div>
+
+
+    <div class="container">
+        <div class="history-form">
+            <h1>Historial de Compras Usuarios</h1>
+            <form>
+                <div class="form-group">
+                    <label for="fecha-inicio">Fecha de Inicio:</label>
+                    <input type="date" id="fecha-inicio" name="fecha-inicio">
+                </div>
+                <div class="form-group">
+                    <label for="fecha-fin">Fecha de Fin:</label>
+                    <input type="date" id="fecha-fin" name="fecha-fin">
+                </div>
+                <button type="submit">Buscar Compras</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
