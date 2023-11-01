@@ -1,127 +1,160 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const openCartBtn = document.getElementById("carrito"); //Selecciona el boton del carrito de compras
-    const cartContainer = document.getElementById("cart");
-    const addToCartButtons = document.querySelectorAll(".btn-primary");
-    const cartItemsList = document.getElementById("cart-items");
-    const cartTotal = document.getElementById("cart-total");
-    const checkoutBtn = document.getElementById("checkout-btn");
-    const closeCartBtn = document.getElementById("close-cart-btn");
-    const openAddToCartButtons = document.querySelectorAll('.btn.btn-primary'); // Selecciona todos los botones "Add to cart"
-    const cartContainerAdd = document.getElementById('cart'); 
+const productos = [
+    {
+        imagen: 'https://chevignon.vtexassets.com/arquivos/ids/1311269-1200-auto?v=638209803240200000&width=1200&height=auto&aspect=true',
+        nombre: "Men's Polo Shirt, Slim Fit Short Sleeve - Pocket",
+        precio: 127425 + " $",
+        inventario: 20
+    },
+    {
+        imagen: 'https://chevignon.vtexassets.com/arquivos/ids/1369610-1200-auto?v=638306538187070000&width=1200&height=auto&aspect=true',
+        nombre: "Women's Denim Jacket, Straight Fit Trucker Type - Military Green",
+        precio: 298.900 + " $",
+        inventario: 15
+    },
+    {
+        imagen: 'https://chevignon.vtexassets.com/arquivos/ids/1369611-1200-auto?v=638306538188630000&width=1200&height=auto&aspect=true',
+        nombre: "Women's Leather Tennis Shoes, Low Top, Rounded Last",
+        precio: 398900 + " $",
+        inventario: 15
+    },
+    {
+        imagen: 'https://chevignon.vtexassets.com/arquivos/ids/1293190-1200-auto?v=638192382354870000&width=1200&height=auto&aspect=true',
+        nombre: "Women's Leather Jacket, Biker Silhouette - Suede",
+        precio: 1049230 + " $",
+        inventario: 15
+    },
+    {
+        imagen: 'https://chevignon.vtexassets.com/arquivos/ids/1288159-1200-auto?v=638182907792600000&width=1200&height=auto&aspect=true',
+        nombre: "Boy's Denim Bermuda Shorts, Fitted Silhouette - Light Blue",
+        precio: 98900 + " $",
+        inventario: 15
+    },
+    {
+        imagen: 'https://chevignon.vtexassets.com/arquivos/ids/1202612-1200-auto?v=638150937101630000&width=1200&height=auto&aspect=true',
+        nombre: "Men's Basic T-Shirt, Slim Fit Round Neck - Pima Cotton",
+        precio: 119900 + " $",
+        inventario: 15
+    },
 
-    const cart = []; // Array para almacenar los productos en el carrito
+    // Agrega más productos según necesites
+]; 
 
-    const inventory = {
-        product1: 10, // Asocia un identificador de producto con su cantidad disponible
-        // Agrega más productos según tu estructura HTML
-    };
+let carrito = [];
+let total = 0;
 
+function cargarProductos() {
+    const container = document.getElementById('productContainer');
 
-    //Al hacer click en los Add to cart abre la seccion del carrito de compras
-    openAddToCartButtons.forEach(function (button) {
-        button.addEventListener('click', function () {
-            cartContainerAdd.style.display = 'block'; // Abre la sección del carrito
-        });
+    productos.forEach(producto => {
+        const productoDiv = document.createElement('div');
+        productoDiv.classList.add('col-md-4', 'mb-4');
+
+        productoDiv.innerHTML = `
+            <div class="card">
+                <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
+                <div class="card-body">
+                    <h5 class="card-title">${producto.nombre}</h5>
+                    <p class="card-text">Precio: ${producto.precio}</p>
+                    <button class="btn btn-success btn-block agregarCarrito" data-nombre="${producto.nombre}">Add to cart</button>
+                </div>
+            </div>
+        `;
+
+        container.appendChild(productoDiv);
     });
-    
-    // Al hacer click en el icono del carrito abre la seccion del carrito de compras
-    openCartBtn.addEventListener("click", function () {
-        cartContainer.style.display = "block";
-    });
-    
-    // Función para agregar un producto al carrito
-    function addToCart(productName, price, productId) {
-        const item = {
-            name: productName,
-            price: price,
-            id: productId
-        };
-        cart.push(item);
-        updateCartUI();
-    }
+}
 
-    // Función para eliminar un producto del carrito
-    function removeFromCart(index) {
-        // Recupera el producto que se va a eliminar
-        const removedProduct = cart[index];
-        // Encuentra el producto en el inventario
-        const productInventory = inventory[removedProduct.id];
-        // Incrementa la cantidad disponible en el inventario
-        inventory[removedProduct.id] = productInventory + 1;
+function abrirCarrito() {
+    document.getElementById('cartContainer').style.display = 'block';
+}
 
-        cart.splice(index, 1);
-        updateCartUI();
-    }
+function cerrarCarrito() {
+    document.getElementById('cartContainer').style.display = 'none';
+}
 
-    // Función para actualizar la interfaz de usuario del carrito
-    function updateCartUI() {
-        cartItemsList.innerHTML = ""; // Limpiar la lista de elementos del carrito
-        let totalPrice = 0;
+function actualizarCarrito() {
+    const cartItems = document.getElementById('cartItems');
+    const cartTotalElement = document.getElementById('cartTotal');
 
-        cart.forEach(function (item, index) {
-            const li = document.createElement("li");
-            li.innerText = `${item.name} - $${item.price}`;
-            
-            const removeButton = document.createElement("button");
-            removeButton.innerText = "Delete";
-            removeButton.classList.add("btn", "btn-danger", "btn-sm");
-            removeButton.addEventListener("click", function () {
-                removeFromCart(index);
-            });
+    // Limpiar el carrito antes de actualizar
+    cartItems.innerHTML = '';
 
-            li.appendChild(removeButton);
-            cartItemsList.appendChild(li);
-            totalPrice += parseFloat(item.price);
+    carrito.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('list-group-item');
+        listItem.textContent = `${item.producto.nombre} - Cantidad: ${item.cantidad} - Precio: ${item.producto.precio}`;
 
-            //Actualiza la cantidad disponible de cada producto en el inventario
-            cart.forEach(function (item) {
-                const productId = item.id;
-                inventory[productId] -= 1;
-            });
-        });
+        // Botón para eliminar el producto del carrito
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('btn', 'btn-danger', 'btn-sm', 'float-right');
+        deleteButton.textContent = 'Eliminar';
+        deleteButton.addEventListener('click', () => eliminarDelCarrito(item.producto));
+        listItem.appendChild(deleteButton);
 
-        cartTotal.innerText = totalPrice.toFixed(2);
-    }
-
-    // Evento de clic en el botón "Agregar al carrito"
-    addToCartButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            const productCard = button.closest(".card");
-            const productName = productCard.querySelector(".card-title").innerText;
-            const productPrice = productCard.querySelector(".card-text").innerText.replace("$", "");
-    
-            // Obtener la cantidad disponible del producto
-            const productQuantity = parseInt(button.dataset.quantity);
-    
-            if (productQuantity > 0) {
-                addToCart(productName, productPrice);
-    
-                // Actualizar cantidad disponible en el inventario
-                button.dataset.quantity = (productQuantity - 1).toString();
-            }
-        });
+        cartItems.appendChild(listItem);
     });
 
-    // Evento de clic en el botón "Comprar"
-    checkoutBtn.addEventListener("click", function () {
-        // Implementa la funcionalidad de finalizar la compra
-        alert("¡Purchase Made!");
-        cart.length = 0; // Limpiar el carrito después de la compra
-        updateCartUI();
-    });
+    cartTotalElement.textContent = total;
+}
 
-    // Evento de clic en el botón "Eliminar"
-    cartItemsList.addEventListener("click", function (event) {
-        if (event.target && event.target.classList.contains("btn-danger")) {
-            const itemIndex = event.target.dataset.index;
-            removeFromCart(itemIndex);
+function agregarAlCarrito(producto) {
+    if (producto.inventario > 0) {
+        const productoEnCarrito = carrito.find(item => item.producto.nombre === producto.nombre);
+
+        if (productoEnCarrito) {
+            productoEnCarrito.cantidad++;
+        } else {
+            carrito.push({ producto, cantidad: 1 });
         }
-    });
 
-    // Evento de clic en el botón "Cerrar Carrito"
-    closeCartBtn.addEventListener("click", function () {
-        document.getElementById("cart").style.display = "none";
-    });
+        total += parseFloat(producto.precio.substring()); // Convierte el precio a un número y suma al total
+        producto.inventario--;
+        actualizarCarrito();
+
+        abrirCarrito(); // Abre el carrito al agregar un producto
+    } else {
+        alert(`The product ${producto.nombre} is out of stock`);
+    }
+}
+
+function eliminarDelCarrito(producto) {
+    const productoIndex = carrito.findIndex(item => item.producto.nombre === producto.nombre);
+
+    if (productoIndex !== -1) {
+        total -= parseFloat(carrito[productoIndex].producto.precio.substring()); // Resta el precio eliminado al total
+        carrito.splice(productoIndex, 1);
+        producto.inventario++;
+    }
+
+    actualizarCarrito();
+
+    if (carrito.length === 0) {
+        cerrarCarrito(); // Cierra el carrito cuando no hay productos en él
+    }
+}
+
+function finalizarCompra() {
+    alert('¡Compra realizada! (Esta es una simulación, no se realizará ningún pago real)');
+}
+
+window.addEventListener('load', cargarProductos);
+
+// Agregar evento al botón de comprar
+document.getElementById('comprarButton').addEventListener('click', finalizarCompra);
+
+// Agregar eventos a los botones de agregar al carrito
+document.addEventListener('click', function(event) {
+    if (event.target && event.target.classList.contains('agregarCarrito')) {
+        const nombreProducto = event.target.dataset.nombre;
+        const producto = productos.find(p => p.nombre === nombreProducto);
+        agregarAlCarrito(producto);
+    }
 });
+
+// Evento para abrir el carrito desde el botón de la barra de navegación
+document.getElementById('carrito').addEventListener('click', abrirCarrito);
+
+// Evento para cerrar el carrito
+document.getElementById('cerrarCarrito').addEventListener('click', cerrarCarrito);
 
 
