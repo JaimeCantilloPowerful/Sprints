@@ -8,7 +8,7 @@ const productos = [
     {
         imagen: 'https://chevignon.vtexassets.com/arquivos/ids/1369610-1200-auto?v=638306538187070000&width=1200&height=auto&aspect=true',
         nombre: "Women's Denim Jacket, Straight Fit Trucker Type - Military Green",
-        precio: 298.900 + " $",
+        precio: 298900 + " $",
         inventario: 15
     },
     {
@@ -87,7 +87,7 @@ function actualizarCarrito() {
         // Botón para eliminar el producto del carrito
         const deleteButton = document.createElement('button');
         deleteButton.classList.add('btn', 'btn-danger', 'btn-sm', 'float-right');
-        deleteButton.textContent = 'Eliminar';
+        deleteButton.textContent = 'Eliminar'; //Al presionarlo eliminara lo que contenga el carrito independientemente de la cantidad
         deleteButton.addEventListener('click', () => eliminarDelCarrito(item.producto));
         listItem.appendChild(deleteButton);
 
@@ -134,7 +134,7 @@ function eliminarDelCarrito(producto) {
 }
 
 function finalizarCompra() {
-    alert('¡Compra realizada! (Esta es una simulación, no se realizará ningún pago real)');
+    alert('Purchase made! (This is a simulation, no real payment will be made)');
 }
 
 window.addEventListener('load', cargarProductos);
